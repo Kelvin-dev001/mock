@@ -28,8 +28,8 @@ const FEATURES = [
     title: '10,000+ Vehicles Protected',
     description:
       'Trusted by thousands of fleet managers and individual car owners across Kenya for reliable, proven vehicle security.',
-    color: 'text-secondary',
-    bg: 'bg-secondary/10',
+    color: 'text-dark',
+    bg: 'bg-dark/10',
   },
   {
     icon: FaMapMarkerAlt,
@@ -44,24 +44,24 @@ const FEATURES = [
     title: '24/7 Customer Support',
     description:
       'Our dedicated support team is available around the clock to assist you with installation, technical issues, and queries.',
-    color: 'text-indigo-600',
-    bg: 'bg-indigo-50',
+    color: 'text-primary',
+    bg: 'bg-primary/10',
   },
   {
     icon: FaTools,
     title: 'Professional Installation',
     description:
       'Certified technicians install all our products to manufacturer standards, ensuring optimal performance and longevity.',
-    color: 'text-green-600',
-    bg: 'bg-green-50',
+    color: 'text-dark',
+    bg: 'bg-dark/10',
   },
   {
     icon: FaTags,
     title: 'Competitive Pricing',
     description:
       'Quality automotive electronics at fair, transparent prices — no hidden fees, no surprises.',
-    color: 'text-purple-600',
-    bg: 'bg-purple-50',
+    color: 'text-accent',
+    bg: 'bg-accent/10',
   },
 ]
 
@@ -84,7 +84,7 @@ export default function WhyChooseUs() {
     <section
       id="why-us"
       aria-labelledby="why-us-heading"
-      className="section-padding bg-white"
+      className="section-padding bg-surface-light"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
@@ -95,17 +95,17 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block text-secondary font-semibold text-sm tracking-widest uppercase mb-3">
+          <span className="inline-block text-primary font-semibold text-sm tracking-widest uppercase mb-3">
             Why Us
           </span>
           <h2
             id="why-us-heading"
-            className="text-3xl sm:text-4xl font-extrabold text-text-dark"
+            className="text-3xl sm:text-4xl font-extrabold text-dark"
           >
             Why Choose{' '}
             <span className="gradient-text">Mock Electrical?</span>
           </h2>
-          <p className="mt-4 text-text-gray max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="mt-4 text-accent max-w-2xl mx-auto text-base sm:text-lg">
             We combine technical excellence, official certification, and customer-first
             service to deliver Kenya's best automotive electronics experience.
           </p>
@@ -136,10 +136,10 @@ export default function WhyChooseUs() {
                 </div>
 
                 <div>
-                  <h3 className="text-base font-bold text-text-dark mb-1">
+                  <h3 className="text-base font-bold text-dark mb-1">
                     {feature.title}
                   </h3>
-                  <p className="text-text-gray text-sm leading-relaxed">
+                  <p className="text-accent text-sm leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

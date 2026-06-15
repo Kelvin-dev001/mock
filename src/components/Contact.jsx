@@ -39,8 +39,8 @@ const CONTACT_ITEMS = [
     label: 'Sagana & Embu Branch',
     value: '0703222356',
     href: 'tel:0703222356',
-    color: 'text-secondary',
-    bg: 'bg-secondary/10',
+    color: 'text-dark',
+    bg: 'bg-dark/10',
   },
   {
     icon: FaWhatsapp,
@@ -84,7 +84,7 @@ export default function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="section-padding bg-white"
+      className="section-padding bg-surface-light"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
@@ -95,16 +95,16 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block text-accent font-semibold text-sm tracking-widest uppercase mb-3">
+          <span className="inline-block text-primary font-semibold text-sm tracking-widest uppercase mb-3">
             Contact Us
           </span>
           <h2
             id="contact-heading"
-            className="text-3xl sm:text-4xl font-extrabold text-text-dark"
+            className="text-3xl sm:text-4xl font-extrabold text-dark"
           >
             Get <span className="gradient-text">In Touch</span>
           </h2>
-          <p className="mt-4 text-text-gray max-w-2xl mx-auto">
+          <p className="mt-4 text-accent max-w-2xl mx-auto">
             Ready to protect your vehicle or fleet? Reach out today and our team will
             get back to you promptly.
           </p>
@@ -119,8 +119,8 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="flex flex-col gap-6"
           >
-            <h3 className="text-xl font-bold text-text-dark">Contact Information</h3>
-            <p className="text-text-gray">
+            <h3 className="text-xl font-bold text-dark">Contact Information</h3>
+            <p className="text-accent">
               Call, WhatsApp, or fill in the form. We're available Monday to Saturday,
               8am–6pm (Nairobi) and 8am–5pm (Sagana &amp; Embu).
             </p>
@@ -135,8 +135,8 @@ export default function Contact() {
                       <Icon className={`text-xl ${item.color}`} aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="text-xs text-text-gray font-medium">{item.label}</p>
-                      <p className={`font-bold text-text-dark`}>{item.value}</p>
+                      <p className="text-xs text-accent font-medium">{item.label}</p>
+                      <p className="font-bold text-dark">{item.value}</p>
                     </div>
                   </div>
                 )
@@ -182,8 +182,8 @@ export default function Contact() {
             {submitted ? (
               <div className="glass-card rounded-3xl p-10 text-center flex flex-col items-center gap-4">
                 <div className="text-5xl">✅</div>
-                <h3 className="text-xl font-bold text-text-dark">Message Sent!</h3>
-                <p className="text-text-gray">
+                <h3 className="text-xl font-bold text-dark">Message Sent!</h3>
+                <p className="text-accent">
                   Thank you for reaching out. Our team will contact you shortly.
                 </p>
                 <button
@@ -200,12 +200,12 @@ export default function Contact() {
                 noValidate
                 aria-label="Contact form"
               >
-                <h3 className="text-xl font-bold text-text-dark mb-1">Send Us a Message</h3>
+                <h3 className="text-xl font-bold text-dark mb-1">Send Us a Message</h3>
 
                 {/* Name */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="contact-name" className="text-sm font-semibold text-text-dark">
-                    Your Name <span className="text-red-400">*</span>
+                  <label htmlFor="contact-name" className="text-sm font-semibold text-dark">
+                    Your Name <span className="text-primary">*</span>
                   </label>
                   <input
                     id="contact-name"
@@ -215,14 +215,14 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="e.g. John Kamau"
-                    className="border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 bg-white transition-all"
+                    className="border border-accent/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 bg-surface-light transition-all"
                   />
                 </div>
 
                 {/* Phone */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="contact-phone" className="text-sm font-semibold text-text-dark">
-                    Phone Number <span className="text-red-400">*</span>
+                  <label htmlFor="contact-phone" className="text-sm font-semibold text-dark">
+                    Phone Number <span className="text-primary">*</span>
                   </label>
                   <input
                     id="contact-phone"
@@ -232,13 +232,13 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="e.g. 0712 345 678"
-                    className="border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 bg-white transition-all"
+                    className="border border-accent/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 bg-surface-light transition-all"
                   />
                 </div>
 
                 {/* Service dropdown */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="contact-service" className="text-sm font-semibold text-text-dark">
+                  <label htmlFor="contact-service" className="text-sm font-semibold text-dark">
                     Service Needed
                   </label>
                   <select
@@ -246,7 +246,7 @@ export default function Contact() {
                     name="service"
                     value={form.service}
                     onChange={handleChange}
-                    className="border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 bg-white transition-all text-text-dark"
+                    className="border border-accent/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 bg-surface-light transition-all text-dark"
                   >
                     <option value="">Select a service…</option>
                     {SERVICES_LIST.map((s) => (
@@ -257,7 +257,7 @@ export default function Contact() {
 
                 {/* Message */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="contact-message" className="text-sm font-semibold text-text-dark">
+                  <label htmlFor="contact-message" className="text-sm font-semibold text-dark">
                     Message
                   </label>
                   <textarea
@@ -267,14 +267,14 @@ export default function Contact() {
                     onChange={handleChange}
                     rows={4}
                     placeholder="Tell us about your vehicle or fleet needs…"
-                    className="border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 bg-white transition-all resize-none"
+                    className="border border-accent/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 bg-surface-light transition-all resize-none"
                   />
                 </div>
 
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="flex items-center justify-center gap-2 bg-primary hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all mt-1"
+                  className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all mt-1"
                 >
                   <FaPaperPlane aria-hidden="true" />
                   Send Message

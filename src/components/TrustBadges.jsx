@@ -21,9 +21,9 @@ const BADGES = [
     icon: FaShieldAlt,
     label: 'ISO Certified',
     sub: 'Quality Management Standard',
-    color: 'text-secondary',
-    bg: 'bg-secondary/10',
-    border: 'border-secondary/20',
+    color: 'text-dark',
+    bg: 'bg-dark/10',
+    border: 'border-dark/20',
   },
   {
     icon: FaAward,
@@ -37,17 +37,17 @@ const BADGES = [
     icon: FaCheckDouble,
     label: 'Fully Licensed',
     sub: 'Business Registration Kenya',
-    color: 'text-green-600',
-    bg: 'bg-green-50',
-    border: 'border-green-200',
+    color: 'text-primary',
+    bg: 'bg-primary/10',
+    border: 'border-primary/20',
   },
   {
     icon: FaStar,
     label: '5-Star Rated',
     sub: 'Customer Satisfaction',
-    color: 'text-yellow-500',
-    bg: 'bg-yellow-50',
-    border: 'border-yellow-200',
+    color: 'text-dark',
+    bg: 'bg-dark/10',
+    border: 'border-dark/20',
   },
 ]
 
@@ -65,7 +65,7 @@ export default function TrustBadges() {
     <section
       id="trust"
       aria-labelledby="trust-heading"
-      className="section-padding bg-bg-teal"
+      className="section-padding bg-surface"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
@@ -76,16 +76,16 @@ export default function TrustBadges() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block text-secondary font-semibold text-sm tracking-widest uppercase mb-3">
+          <span className="inline-block text-primary font-semibold text-sm tracking-widest uppercase mb-3">
             Verified & Trusted
           </span>
           <h2
             id="trust-heading"
-            className="text-3xl sm:text-4xl font-extrabold text-text-dark"
+            className="text-3xl sm:text-4xl font-extrabold text-dark"
           >
             Trusted &amp; <span className="gradient-text">Certified</span>
           </h2>
-          <p className="mt-4 text-text-gray max-w-2xl mx-auto">
+          <p className="mt-4 text-accent max-w-2xl mx-auto">
             Our certifications and partnerships demonstrate our commitment to quality,
             compliance, and customer trust.
           </p>
@@ -115,18 +115,18 @@ export default function TrustBadges() {
                   <Icon className={`text-2xl ${badge.color}`} aria-hidden="true" />
                 </div>
                 <p className={`font-bold text-sm ${badge.color}`}>{badge.label}</p>
-                <p className="text-text-gray text-xs text-center leading-tight">{badge.sub}</p>
+                <p className="text-accent text-xs text-center leading-tight">{badge.sub}</p>
               </motion.div>
             )
           })}
         </motion.div>
 
         {/* Divider */}
-        <div className="border-t border-white/50 mb-10" />
+        <div className="border-t border-glass-border mb-10" />
 
         {/* Partner logos / trust bar */}
         <div className="text-center">
-          <p className="text-text-gray text-sm font-medium uppercase tracking-wider mb-6">
+          <p className="text-accent text-sm font-medium uppercase tracking-wider mb-6">
             Serving organisations across Kenya
           </p>
           <motion.div
@@ -139,7 +139,7 @@ export default function TrustBadges() {
             {PARTNERS.map((partner) => (
               <span
                 key={partner}
-                className="glass-card px-5 py-2.5 rounded-full text-text-gray text-sm font-medium border border-white/60"
+                className="glass-card px-5 py-2.5 rounded-full text-accent text-sm font-medium border border-glass-border"
               >
                 {partner}
               </span>
