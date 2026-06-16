@@ -11,6 +11,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaPhone, FaWhatsapp, FaCheckCircle } from 'react-icons/fa'
+import TiltCard from './motion/TiltCard'
+import MagneticButton from './motion/MagneticButton'
 
 // Staggered container variants
 const containerVariants = {
@@ -105,31 +107,27 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mt-2">
-            {/* Primary: Call Now */}
-            <motion.a
+            {/* Primary: Call Now (magnetic) */}
+            <MagneticButton
               href="tel:0706888600"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
               className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-colors text-base"
               aria-label="Call us at 0706888600"
             >
               <FaPhone aria-hidden="true" />
               Call Now: 0706888600
-            </motion.a>
+            </MagneticButton>
 
-            {/* Secondary: WhatsApp (glass button) */}
-            <motion.a
+            {/* Secondary: WhatsApp (magnetic glass button) */}
+            <MagneticButton
               href="https://wa.me/254716439680"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
               className="flex items-center justify-center gap-2 glass-card text-dark hover:text-primary font-bold px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-colors text-base"
               aria-label="Chat with us on WhatsApp"
             >
               <FaWhatsapp className="text-xl text-green-600" aria-hidden="true" />
               WhatsApp Us
-            </motion.a>
+            </MagneticButton>
           </motion.div>
         </motion.div>
 
@@ -140,12 +138,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
           className="relative"
         >
-          {/* Glass frame around the hero visual */}
-          <motion.div
-            whileHover={{ scale: 1.015 }}
-            transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-            className="glass-card rounded-3xl p-3 shadow-2xl"
-          >
+          {/* Glass frame around the hero visual — pointer-reactive 3D tilt */}
+          <TiltCard max={7} className="glass-card rounded-3xl p-3 shadow-2xl">
             {/*
               TODO: Replace this placeholder with a real hero photo of a branded
               fleet / installed dashboard. Drop the asset in public/images/ and
@@ -157,7 +151,7 @@ export default function Hero() {
               loading="eager"
               className="w-full aspect-[4/3] object-cover rounded-2xl"
             />
-          </motion.div>
+          </TiltCard>
 
           {/* Floating stat card (glassmorphism) */}
           <motion.div

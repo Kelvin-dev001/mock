@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sitemap for Mock Electrical and Electronics Ltd.
+  Lists the homepage and every /services/<slug> route so crawlers and LLMs can
+  discover the full catalogue. Keep in sync with src/data/services.js when
+  services are added or slugs change. TODO: confirm production domain.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://mockelectrical.co.ke/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://mockelectrical.co.ke/services/ntsa-speed-limiters</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mockelectrical.co.ke/services/gps-trackers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mockelectrical.co.ke/services/basic-trackers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mockelectrical.co.ke/services/bluetooth-trackers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mockelectrical.co.ke/services/video-telematics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mockelectrical.co.ke/services/car-alarms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

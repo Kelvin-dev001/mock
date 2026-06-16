@@ -9,20 +9,23 @@
  */
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { FaBars, FaTimes, FaPhone, FaBolt } from 'react-icons/fa'
 
-// Navigation links definition
+// Navigation links definition — each `id` is a homepage section anchor.
 const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'About', href: '#why-us' },
-  { label: 'Branches', href: '#branches' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', id: 'home' },
+  { label: 'Services', id: 'services' },
+  { label: 'About', id: 'why-us' },
+  { label: 'Branches', id: 'branches' },
+  { label: 'Contact', id: 'contact' },
 ]
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   // Add glass effect when user scrolls down
   useEffect(() => {
@@ -30,6 +33,32 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Smoothly scroll to a homepage section. If we're on another route (e.g. a
+  // service page), navigate home first, then scroll once it has rendered.
+  const goToSection = (id) => (e) => {
+    e.preventDefault()
+    setMenuOpen(false)
+    const scroll = () => {
+      const el = document.getElementById(id)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+    if (location.pathname !== '/') {
+      navigate('/')
+      // Wait for the homepage to mount before scrolling.
+      setTimeout(scroll, 80)
+    } else {
+      scroll()
+    }
+  }
+
+  // Brand click → home (top)
+  const goHome = (e) => {
+    e.preventDefault()
+    setMenuOpen(false)
+    if (location.pathname !== '/') navigate('/')
+    else window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   // Close mobile menu when a link is clicked
   const handleLinkClick = () => setMenuOpen(false)
@@ -47,7 +76,7 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         {/* ── Logo / Brand ── */}
-        <a href="#home" className="flex items-center gap-2 group">
+        <a href="/" onClick={goHome} className="flex items-center gap-2 group">
           <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-md">
             <FaBolt className="text-white text-lg" aria-hidden="true" />
           </div>
@@ -59,9 +88,10 @@ export default function Navbar() {
         {/* ── Desktop nav links ── */}
         <ul className="hidden md:flex items-center gap-8" role="list">
           {NAV_LINKS.map((link) => (
-            <li key={link.href}>
+            <li key={link.id}>
               <a
-                href={link.href}
+                href={`/#${link.id}`}
+                onClick={goToSection(link.id)}
                 className="text-accent font-medium hover:text-primary transition-colors text-sm tracking-wide"
               >
                 {link.label}
@@ -104,10 +134,10 @@ export default function Navbar() {
           >
             <ul className="flex flex-col px-6 py-4 gap-4" role="list">
               {NAV_LINKS.map((link) => (
-                <li key={link.href}>
+                <li key={link.id}>
                   <a
-                    href={link.href}
-                    onClick={handleLinkClick}
+                    href={`/#${link.id}`}
+                    onClick={goToSection(link.id)}
                     className="block text-dark font-medium py-1 hover:text-primary transition-colors"
                   >
                     {link.label}

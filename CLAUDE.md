@@ -94,6 +94,39 @@ using the brand red `C8102E` / charcoal `1A1A1A` so placeholders stay on-brand.
 
 _(Newest first — updated as work lands.)_
 
+- **2026-06-16 (redesign/v2):** Dedicated service pages + SEO + lightweight
+  3D-feel animation — landed.
+  - **Routing** — added `react-router-dom` + `react-helmet-async`. `main.jsx`
+    now wraps the app in `BrowserRouter` + `HelmetProvider`; `App.jsx` became a
+    persistent layout (Navbar/Footer/WhatsApp) with `Routes`: `/` (homepage),
+    `/services/:slug` (6 detail pages), and a `*` 404. Added a `ScrollToTop`
+    helper. `Navbar` links are now route-aware (scroll to homepage sections from
+    any route).
+  - **`src/data/services.js`** — new single source of truth for the six
+    services (slug, icon, titles, short + intro copy, benefit bullets, FAQs,
+    on-brand placehold.co image + alt). Homepage grid and detail pages both read
+    from it. All concrete claims marked `// TODO: confirm`; images keep `TODO`
+    swap markers per the Image Plan.
+  - **`src/pages/`** — new `HomePage.jsx` (section stack + Organization/
+    LocalBusiness + ItemList JSON-LD), `ServicePage.jsx` (glass hero with tilt
+    image, benefits, FAQ, related strip, magnetic CTAs, + Service/FAQ/Breadcrumb
+    JSON-LD), and `NotFound.jsx`.
+  - **`src/components/Seo.jsx`** — react-helmet-async wrapper: per-route title,
+    description, canonical, OG/Twitter, and route-specific JSON-LD. Layers over
+    the static `index.html` defaults (kept as the no-JS baseline).
+  - **`src/components/motion/`** — lightweight 3D-feel primitives: `TiltCard`
+    (pointer-tracking perspective tilt), `MagneticButton` (cursor-drift CTAs),
+    `CountUp` (scroll-triggered counter), and `useReducedMotion`. All
+    transform/opacity only and disabled under `prefers-reduced-motion`. Applied
+    tilt to Hero/Services cards and magnetic to primary CTAs.
+  - **`public/robots.txt` + `public/sitemap.xml`** — allow all crawlers; sitemap
+    lists `/` and all six service routes. `vite.config.js` documents an optional
+    PRERENDER UPGRADE path for full static HTML per route.
+  - **Verification** — `npm run build` passes; `npm run dev` serves `/`,
+    `/services/:slug`, `/sitemap.xml`, `/robots.txt` (all HTTP 200). Note: the
+    `npm run lint` script is broken pre-existing (ESLint v10 with no
+    `eslint.config.js` in the repo) — unrelated to this change.
+
 - **2026-06-15 (redesign/v2):** Rebrand to the logo-derived red/charcoal palette
   with glassmorphism + Framer Motion polish — landed.
   - **`tailwind.config.js`** — added named brand tokens (`primary` `#C8102E`,
