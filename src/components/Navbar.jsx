@@ -10,7 +10,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { FaBars, FaTimes, FaPhone, FaBolt } from 'react-icons/fa'
+import { FaBars, FaTimes, FaPhone } from 'react-icons/fa'
 
 // Navigation links definition — each `id` is a homepage section anchor.
 const NAV_LINKS = [
@@ -75,15 +75,17 @@ export default function Navbar() {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20"
         aria-label="Main navigation"
       >
-        {/* ── Logo / Brand ── */}
-        <a href="/" onClick={goHome} className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-md">
-            <FaBolt className="text-white text-lg" aria-hidden="true" />
-          </div>
-          <span className="font-bold text-lg leading-tight text-dark group-hover:text-primary transition-colors">
-            Mock<span className="text-primary"> Electrical</span>
-          </span>
-        </a>
+       {/* ── Logo / Brand ── */}
+<a href="/" onClick={goHome} className="flex items-center gap-2 group">
+  <img
+    src="/images/logo.svg"
+    alt="Mock Electrical and Electronics Ltd logo"
+    className="h-9 w-auto"
+  />
+  <span className="font-bold text-lg leading-tight text-dark group-hover:text-primary transition-colors">
+    Mock<span className="text-primary"> Electrical</span>
+  </span>
+</a>
 
         {/* ── Desktop nav links ── */}
         <ul className="hidden md:flex items-center gap-8" role="list">
