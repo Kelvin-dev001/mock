@@ -4,12 +4,15 @@
  *  - H1 headline: "Kenya's Trusted Leader in Vehicle Safety & Tracking Solutions"
  *  - Value proposition subtext
  *  - Two CTA buttons: Call Now + WhatsApp Us
- *  - Large hero image placeholder with gradient
- *  - Framer Motion entrance animations
+ *  - Large hero image placeholder (swap for a real fleet photo — see TODO)
+ *  - Glassmorphism floating stat / compliance cards
+ *  - Framer Motion entrance animations + hover effects
  */
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaPhone, FaWhatsapp, FaCheckCircle } from 'react-icons/fa'
+import TiltCard from './motion/TiltCard'
+import MagneticButton from './motion/MagneticButton'
 
 // Staggered container variants
 const containerVariants = {
@@ -37,15 +40,15 @@ export default function Hero() {
     <section
       id="home"
       aria-label="Hero section"
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-bg-light via-bg-blue to-bg-teal"
+      className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-surface via-surface to-surface-light"
     >
-      {/* Decorative background blobs */}
+      {/* Decorative background blobs (on-brand red / charcoal) */}
       <div
         className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"
         aria-hidden="true"
       />
       <div
-        className="absolute bottom-0 left-0 w-72 h-72 bg-secondary/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none"
+        className="absolute bottom-0 left-0 w-72 h-72 bg-dark/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none"
         aria-hidden="true"
       />
 
@@ -67,7 +70,7 @@ export default function Hero() {
           {/* H1 Headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-text-dark leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-dark leading-tight"
           >
             Kenya's Trusted Leader in{' '}
             <span className="gradient-text">Vehicle Safety &amp; Tracking</span>{' '}
@@ -77,7 +80,7 @@ export default function Hero() {
           {/* Value proposition */}
           <motion.p
             variants={itemVariants}
-            className="text-lg text-text-gray leading-relaxed max-w-xl"
+            className="text-lg text-accent leading-relaxed max-w-xl"
           >
             NTSA-approved speed limiters, GPS tracking, and smart vehicle telematics
             — protecting your fleet and loved ones since day one. Serving Nairobi,
@@ -94,9 +97,9 @@ export default function Hero() {
             {TRUST_POINTS.map((point) => (
               <li
                 key={point}
-                className="flex items-center gap-1.5 text-sm font-medium text-text-dark"
+                className="flex items-center gap-1.5 text-sm font-medium text-dark"
               >
-                <FaCheckCircle className="text-secondary shrink-0" aria-hidden="true" />
+                <FaCheckCircle className="text-primary shrink-0" aria-hidden="true" />
                 {point}
               </li>
             ))}
@@ -104,27 +107,27 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mt-2">
-            {/* Primary: Call Now */}
-            <a
+            {/* Primary: Call Now (magnetic) */}
+            <MagneticButton
               href="tel:0706888600"
-              className="flex items-center justify-center gap-2 bg-accent hover:bg-orange-500 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all text-base"
+              className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-colors text-base"
               aria-label="Call us at 0706888600"
             >
               <FaPhone aria-hidden="true" />
               Call Now: 0706888600
-            </a>
+            </MagneticButton>
 
-            {/* Secondary: WhatsApp */}
-            <a
+            {/* Secondary: WhatsApp (magnetic glass button) */}
+            <MagneticButton
               href="https://wa.me/254716439680"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-white hover:bg-green-50 text-green-600 border-2 border-green-500 font-bold px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all text-base"
+              className="flex items-center justify-center gap-2 glass-card text-dark hover:text-primary font-bold px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-colors text-base"
               aria-label="Chat with us on WhatsApp"
             >
-              <FaWhatsapp className="text-xl" aria-hidden="true" />
+              <FaWhatsapp className="text-xl text-green-600" aria-hidden="true" />
               WhatsApp Us
-            </a>
+            </MagneticButton>
           </motion.div>
         </motion.div>
 
@@ -135,46 +138,50 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
           className="relative"
         >
-          {/* Placeholder gradient box representing a vehicle fleet image */}
-          <div
-            className="w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center bg-gradient-to-br from-primary/20 via-secondary/20 to-bg-teal border border-white/60"
-            role="img"
-            aria-label="Hero Image — Vehicle Fleet"
-          >
-            <div className="text-center p-8">
-              <div className="text-6xl mb-4">🚗🛻🚕</div>
-              <p className="text-text-dark font-semibold text-lg">Hero Image — Vehicle Fleet</p>
-              <p className="text-text-gray text-sm mt-2">Replace with an actual fleet photo</p>
-            </div>
-          </div>
+          {/* Glass frame around the hero visual — pointer-reactive 3D tilt */}
+          <TiltCard max={7} className="glass-card rounded-3xl p-3 shadow-2xl">
+            {/*
+              TODO: Replace this placeholder with a real hero photo of a branded
+              fleet / installed dashboard. Drop the asset in public/images/ and
+              point src to e.g. "/images/hero-fleet.jpg".
+            */}
+            <img
+              src="https://placehold.co/720x560/1A1A1A/F5F5F5?text=Protected+Fleet"
+              alt="Mock Electrical protected vehicle fleet on a Kenyan road"
+              loading="eager"
+              className="w-full aspect-[4/3] object-cover rounded-2xl"
+            />
+          </TiltCard>
 
-          {/* Floating stat card */}
+          {/* Floating stat card (glassmorphism) */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.9, duration: 0.5 }}
+            whileHover={{ y: -4 }}
             className="absolute -bottom-6 -left-6 glass-card rounded-2xl p-4 flex items-center gap-3 shadow-xl"
           >
-            <div className="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-primary/15 rounded-full flex items-center justify-center">
               <span className="text-lg" aria-hidden="true">📍</span>
             </div>
             <div>
-              <p className="font-bold text-text-dark text-sm">3 Locations</p>
-              <p className="text-text-gray text-xs">Nairobi · Sagana · Embu</p>
+              <p className="font-bold text-dark text-sm">3 Locations</p>
+              <p className="text-accent text-xs">Nairobi · Sagana · Embu</p>
             </div>
           </motion.div>
 
-          {/* Floating compliance badge */}
+          {/* Floating compliance badge (glassmorphism) */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.5 }}
+            whileHover={{ y: -4 }}
             className="absolute -top-4 -right-4 glass-card rounded-2xl p-3 flex items-center gap-2 shadow-xl"
           >
             <span className="text-2xl" aria-hidden="true">✅</span>
             <div>
               <p className="font-bold text-primary text-xs">NTSA Approved</p>
-              <p className="text-text-gray text-xs">Certified &amp; Compliant</p>
+              <p className="text-accent text-xs">Certified &amp; Compliant</p>
             </div>
           </motion.div>
         </motion.div>

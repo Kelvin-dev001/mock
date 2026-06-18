@@ -20,7 +20,7 @@ const BRANCHES = [
       'Our main headquarters serving the greater Nairobi metropolitan area. Visit us for consultations, installations, and product demos.',
     mapAlt: 'Map showing location of Mock Electrical Nairobi Head Office',
     emoji: '🏢',
-    accent: 'from-primary/20 to-blue-50',
+    accent: 'from-primary/20 to-surface',
     badgeColor: 'bg-primary text-white',
   },
   {
@@ -33,8 +33,8 @@ const BRANCHES = [
       'Serving Sagana, Karatina, and surrounding Mount Kenya region with full installation and support services.',
     mapAlt: 'Map showing location of Mock Electrical Sagana Branch',
     emoji: '🏪',
-    accent: 'from-secondary/20 to-teal-50',
-    badgeColor: 'bg-secondary text-white',
+    accent: 'from-dark/20 to-surface',
+    badgeColor: 'bg-dark text-white',
   },
   {
     name: 'Embu Branch',
@@ -46,7 +46,7 @@ const BRANCHES = [
       'Serving Embu County and Eastern Kenya with expert automotive electronics installation and after-sales support.',
     mapAlt: 'Map showing location of Mock Electrical Embu Branch',
     emoji: '🏬',
-    accent: 'from-accent/20 to-orange-50',
+    accent: 'from-accent/20 to-surface',
     badgeColor: 'bg-accent text-white',
   },
 ]
@@ -69,7 +69,7 @@ export default function Branches() {
     <section
       id="branches"
       aria-labelledby="branches-heading"
-      className="section-padding bg-bg-blue"
+      className="section-padding bg-surface-light"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
@@ -85,11 +85,11 @@ export default function Branches() {
           </span>
           <h2
             id="branches-heading"
-            className="text-3xl sm:text-4xl font-extrabold text-text-dark"
+            className="text-3xl sm:text-4xl font-extrabold text-dark"
           >
             Find Us <span className="gradient-text">Near You</span>
           </h2>
-          <p className="mt-4 text-text-gray max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="mt-4 text-accent max-w-2xl mx-auto text-base sm:text-lg">
             Three convenient locations across Kenya — Nairobi, Sagana, and Embu — ready
             to serve you with expert vehicle electronics installation and support.
           </p>
@@ -118,14 +118,14 @@ export default function Branches() {
                 aria-label={branch.mapAlt}
               >
                 <span className="text-5xl">{branch.emoji}</span>
-                <p className="text-xs text-text-gray px-4 text-center">{branch.mapAlt}</p>
+                <p className="text-xs text-accent px-4 text-center">{branch.mapAlt}</p>
               </div>
 
               {/* Card content */}
               <div className="p-6">
                 {/* Branch name + badge */}
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-lg font-bold text-text-dark flex items-center gap-2">
+                  <h3 className="text-lg font-bold text-dark flex items-center gap-2">
                     <FaBuilding className="text-primary" aria-hidden="true" />
                     {branch.name}
                   </h3>
@@ -134,12 +134,12 @@ export default function Branches() {
                   </span>
                 </div>
 
-                <p className="text-text-gray text-sm leading-relaxed mb-4">
+                <p className="text-accent text-sm leading-relaxed mb-4">
                   {branch.description}
                 </p>
 
                 {/* Phone */}
-                <div className="flex items-center gap-2 text-text-dark mb-2">
+                <div className="flex items-center gap-2 text-dark mb-2">
                   <FaPhone className="text-primary text-sm" aria-hidden="true" />
                   <a
                     href={branch.tel}
@@ -151,21 +151,21 @@ export default function Branches() {
                 </div>
 
                 {/* Hours */}
-                <div className="flex items-center gap-2 text-text-gray mb-5">
-                  <FaClock className="text-secondary text-sm" aria-hidden="true" />
+                <div className="flex items-center gap-2 text-accent mb-5">
+                  <FaClock className="text-primary text-sm" aria-hidden="true" />
                   <span className="text-sm">{branch.hours}</span>
                 </div>
 
                 {/* Location marker */}
-                <div className="flex items-center gap-2 text-text-gray mb-5">
-                  <FaMapMarkerAlt className="text-accent text-sm" aria-hidden="true" />
+                <div className="flex items-center gap-2 text-accent mb-5">
+                  <FaMapMarkerAlt className="text-primary text-sm" aria-hidden="true" />
                   <span className="text-sm">{branch.name}, Kenya</span>
                 </div>
 
                 {/* CTA button */}
                 <a
                   href={branch.tel}
-                  className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition-all hover:shadow-md"
+                  className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-xl transition-all hover:shadow-md"
                   aria-label={`Call ${branch.name} branch`}
                 >
                   <FaPhone className="text-sm" aria-hidden="true" />

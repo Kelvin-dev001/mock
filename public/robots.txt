@@ -1,0 +1,7 @@
+# robots.txt — Mock Electrical and Electronics Ltd
+# Allow all crawlers (incl. AI/LLM crawlers) full access.
+User-agent: *
+Allow: /
+
+# TODO: confirm production domain before launch.
+Sitemap: https://mockelectrical.co.ke/sitemap.xml

@@ -1,7 +1,11 @@
 /**
  * Services.jsx — Six service offering cards with glassmorphism styling.
- * Each card includes: icon, image placeholder, title, and description.
+ * Each card includes: image placeholder, icon badge, title, and description.
  * Staggered scroll-triggered animation via Framer Motion useInView.
+ *
+ * NOTE: All `image` values are on-brand placehold.co placeholders. Each card is
+ * marked with a TODO indicating the real product photo to swap in (store the
+ * final assets in public/images/ — see the Image Plan in CLAUDE.md).
  *
  * Services:
  *  1. NTSA Approved Vehicle Speed Limiters
@@ -14,96 +18,10 @@
 import React from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import {
-  FaCar,
-  FaMapMarkerAlt,
-  FaShieldAlt,
-  FaBluetooth,
-  FaVideo,
-  FaBell,
-} from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
-// Service data
-const SERVICES = [
-  {
-    icon: FaCar,
-    title: 'NTSA Approved Vehicle Speed Limiters',
-    description:
-      'Stay compliant with Kenya\'s NTSA regulations. Our certified speed limiters ensure your vehicles operate within legal speed limits.',
-    bgFrom: 'from-blue-100',
-    bgTo: 'to-blue-50',
-    iconColor: 'text-primary',
-    imageBg: 'from-primary/20 to-blue-100',
-    imageAlt: 'NTSA Approved Vehicle Speed Limiter device installed in a vehicle',
-    emoji: '⚡',
-    keyword: 'NTSA speed limiters Kenya',
-  },
-  {
-    icon: FaMapMarkerAlt,
-    title: 'GPS Vehicle Trackers',
-    description:
-      'Real-time vehicle tracking with advanced GPS technology. Monitor your fleet 24/7 from anywhere in Kenya.',
-    bgFrom: 'from-teal-100',
-    bgTo: 'to-teal-50',
-    iconColor: 'text-secondary',
-    imageBg: 'from-secondary/20 to-teal-100',
-    imageAlt: 'GPS vehicle tracker device showing real-time location on map',
-    emoji: '📡',
-    keyword: 'GPS vehicle tracking Kenya',
-  },
-  {
-    icon: FaShieldAlt,
-    title: 'Basic Vehicle Trackers',
-    description:
-      'Affordable and reliable vehicle tracking solutions for personal and commercial vehicles.',
-    bgFrom: 'from-purple-100',
-    bgTo: 'to-purple-50',
-    iconColor: 'text-purple-600',
-    imageBg: 'from-purple-200/40 to-purple-100',
-    imageAlt: 'Basic vehicle tracker unit for affordable fleet monitoring',
-    emoji: '🛡️',
-    keyword: 'vehicle trackers Kenya',
-  },
-  {
-    icon: FaBluetooth,
-    title: 'Bluetooth Trackers',
-    description:
-      'Smart Bluetooth Ignition Technology for keyless vehicle security and convenience.',
-    bgFrom: 'from-indigo-100',
-    bgTo: 'to-indigo-50',
-    iconColor: 'text-indigo-600',
-    imageBg: 'from-indigo-200/40 to-indigo-100',
-    imageAlt: 'Bluetooth tracker with smart ignition technology for vehicle security',
-    emoji: '📶',
-    keyword: 'Bluetooth vehicle tracker Kenya',
-  },
-  {
-    icon: FaVideo,
-    title: 'Vehicle Video Telematics',
-    description:
-      'HD video monitoring combined with telematics data for complete fleet visibility and driver safety.',
-    bgFrom: 'from-orange-100',
-    bgTo: 'to-orange-50',
-    iconColor: 'text-accent',
-    imageBg: 'from-accent/20 to-orange-100',
-    imageAlt: 'Vehicle dash camera for video telematics and fleet safety monitoring',
-    emoji: '📹',
-    keyword: 'vehicle video telematics Kenya',
-  },
-  {
-    icon: FaBell,
-    title: 'Car Alarms',
-    description:
-      'Advanced car alarm systems to protect your vehicle from theft and unauthorized access.',
-    bgFrom: 'from-red-100',
-    bgTo: 'to-red-50',
-    iconColor: 'text-red-500',
-    imageBg: 'from-red-200/40 to-red-100',
-    imageAlt: 'Car alarm system for vehicle theft protection in Kenya',
-    emoji: '🔔',
-    keyword: 'car alarms Nairobi Kenya',
-  },
-]
+import { SERVICES } from '../data/services'
+import TiltCard from './motion/TiltCard'
 
 // Animation variants
 const containerVariants = {
@@ -124,9 +42,15 @@ export default function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="section-padding bg-bg-blue"
+      className="section-padding bg-surface relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
+      {/* Decorative on-brand blob */}
+      <div
+        className="absolute top-1/4 -left-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="max-w-7xl mx-auto relative">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -140,11 +64,11 @@ export default function Services() {
           </span>
           <h2
             id="services-heading"
-            className="text-3xl sm:text-4xl font-extrabold text-text-dark"
+            className="text-3xl sm:text-4xl font-extrabold text-dark"
           >
             Our <span className="gradient-text">Services</span>
           </h2>
-          <p className="mt-4 text-text-gray max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="mt-4 text-accent max-w-2xl mx-auto text-base sm:text-lg">
             From NTSA-approved speed limiters to advanced video telematics — we provide
             end-to-end vehicle safety and tracking solutions across Kenya.
           </p>
@@ -161,48 +85,53 @@ export default function Services() {
           {SERVICES.map((service) => {
             const Icon = service.icon
             return (
-              <motion.article
-                key={service.title}
-                variants={cardVariants}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="glass-card rounded-3xl overflow-hidden group cursor-pointer"
-                aria-label={service.title}
-              >
-                {/* Image placeholder */}
-                <div
-                  className={`w-full h-44 bg-gradient-to-br ${service.imageBg} flex items-center justify-center`}
-                  role="img"
-                  aria-label={service.imageAlt}
+              <motion.div key={service.slug} variants={cardVariants}>
+                <TiltCard
+                  max={6}
+                  className="glass-card rounded-3xl overflow-hidden group h-full"
                 >
-                  <div className="text-center">
-                    <div className="text-5xl mb-2">{service.emoji}</div>
-                    <p className="text-xs text-text-gray px-4 leading-tight">{service.imageAlt}</p>
-                  </div>
-                </div>
-
-                {/* Card body */}
-                <div className={`p-6 bg-gradient-to-br ${service.bgFrom} ${service.bgTo}`}>
-                  <div className={`w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                    <Icon className={`text-xl ${service.iconColor}`} aria-hidden="true" />
-                  </div>
-
-                  <h3 className="text-lg font-bold text-text-dark mb-2 leading-snug">
-                    {service.title}
-                  </h3>
-                  <p className="text-text-gray text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  {/* Learn more link */}
-                  <a
-                    href="#contact"
-                    className={`inline-flex items-center gap-1 mt-4 text-sm font-semibold ${service.iconColor} hover:underline`}
-                    aria-label={`Enquire about ${service.title}`}
+                  <Link
+                    to={`/services/${service.slug}`}
+                    className="flex flex-col h-full"
+                    aria-label={`View details for ${service.title}`}
                   >
-                    Enquire Now →
-                  </a>
-                </div>
-              </motion.article>
+                    {/* Image placeholder — real photo swapped via the TODO in
+                        src/data/services.js */}
+                    <div className="relative h-44 overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.imageAlt}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      {/* Subtle charcoal gradient for legibility on real photos */}
+                      <div
+                        className="absolute inset-0 bg-gradient-to-t from-dark/30 to-transparent"
+                        aria-hidden="true"
+                      />
+                    </div>
+
+                    {/* Card body */}
+                    <div className="p-6 flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-2xl bg-surface-light shadow-sm flex items-center justify-center mb-4 -mt-10 relative z-10 border border-glass-border group-hover:scale-110 transition-transform">
+                        <Icon className="text-xl text-primary" aria-hidden="true" />
+                      </div>
+
+                      <h3 className="text-lg font-bold text-dark mb-2 leading-snug">
+                        {service.title}
+                      </h3>
+                      <p className="text-accent text-sm leading-relaxed">
+                        {service.short}
+                      </p>
+
+                      {/* Learn more link */}
+                      <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-primary group-hover:text-primary-dark group-hover:gap-2 transition-all">
+                        Learn More →
+                      </span>
+                    </div>
+                  </Link>
+                </TiltCard>
+              </motion.div>
             )
           })}
         </motion.div>

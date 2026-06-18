@@ -1,46 +1,54 @@
 /**
- * App.jsx — Root application component.
- * Assembles all page sections in order and renders the floating WhatsApp button.
+ * App.jsx — Root layout + client-side routes.
+ *
+ * Navbar, Footer, and the floating WhatsApp button persist across every route.
+ * The routed content swaps between the homepage, the per-service detail pages,
+ * and a 404. A ScrollToTop helper resets scroll position on navigation.
  */
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Services from './components/Services'
-import WhyChooseUs from './components/WhyChooseUs'
-import TrustBadges from './components/TrustBadges'
-import Branches from './components/Branches'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 
+import HomePage from './pages/HomePage'
+import ServicePage from './pages/ServicePage'
+import NotFound from './pages/NotFound'
+
+// Reset scroll to top whenever the route changes (SPA navigation).
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
 function App() {
   return (
-    // Page-load fade-in transition
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-bg-light"
+      className="min-h-screen bg-surface"
     >
-      {/* Sticky navigation */}
+      <ScrollToTop />
+
+      {/* Sticky navigation (persists across routes) */}
       <Navbar />
 
-      {/* Main content sections */}
       <main>
-        <Hero />
-        <Services />
-        <WhyChooseUs />
-        <TrustBadges />
-        <Branches />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services/:slug" element={<ServicePage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
 
-      {/* Site footer */}
+      {/* Site footer + floating WhatsApp CTA (persist across routes) */}
       <Footer />
-
-      {/* Floating WhatsApp CTA — always visible */}
       <WhatsAppButton />
     </motion.div>
   )

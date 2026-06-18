@@ -28,7 +28,7 @@ export default function WhatsAppButton() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
             transition={{ duration: 0.3 }}
-            className="bg-white text-text-dark text-sm font-semibold px-4 py-2 rounded-2xl shadow-lg border border-green-100 flex items-center gap-2 max-w-[160px]"
+            className="glass-card text-dark text-sm font-semibold px-4 py-2 rounded-2xl shadow-lg flex items-center gap-2 max-w-[160px]"
             role="tooltip"
           >
             {/* Online indicator dot */}
@@ -40,7 +40,7 @@ export default function WhatsAppButton() {
             {/* Close tooltip */}
             <button
               onClick={() => setShowTooltip(false)}
-              className="ml-1 text-slate-400 hover:text-slate-600 text-xs leading-none"
+              className="ml-1 text-accent/60 hover:text-accent text-xs leading-none"
               aria-label="Dismiss tooltip"
             >
               ✕
