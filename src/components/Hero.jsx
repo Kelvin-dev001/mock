@@ -31,7 +31,7 @@ const itemVariants = {
 // Quick trust signals shown below the headline
 const TRUST_POINTS = [
   'NTSA Certified',
-  '10,000+ Vehicles Protected',
+  '10,000+ Vehicles Installed',
   '3 Branches in Kenya',
 ]
 
@@ -63,7 +63,7 @@ export default function Hero() {
           {/* Badge */}
           <motion.div variants={itemVariants}>
             <span className="inline-flex items-center gap-2 bg-primary/10 text-primary text-sm font-semibold px-4 py-1.5 rounded-full border border-primary/20">
-              🇰🇪 Kenya's #1 Automotive Electronics Provider
+              Kenya's #1 vehicle telematics solutions Provider
             </span>
           </motion.div>
 
@@ -72,7 +72,7 @@ export default function Hero() {
             variants={itemVariants}
             className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-dark leading-tight"
           >
-            Kenya's Trusted Leader in{' '}
+            Trusted Leader in{' '}
             <span className="gradient-text">Vehicle Safety &amp; Tracking</span>{' '}
             Solutions
           </motion.h1>
@@ -82,9 +82,8 @@ export default function Hero() {
             variants={itemVariants}
             className="text-lg text-accent leading-relaxed max-w-xl"
           >
-            NTSA-approved speed limiters, GPS tracking, and smart vehicle telematics
-            — protecting your fleet and loved ones since day one. Serving Nairobi,
-            Sagana, and Embu.
+            NTSA-approved Speed Governors, Vehicle GPS Tracking, Car alarms and Smart Vehicle Video Telematics
+            solutions that guarantee your fleet. Serving Nairobi, Sagana, and Embu.
           </motion.p>
 
           {/* Trust points */}
@@ -143,11 +142,11 @@ export default function Hero() {
             {/*
               TODO: Replace this placeholder with a real hero photo of a branded
               fleet / installed dashboard. Drop the asset in public/images/ and
-              point src to e.g. "/images/hero-fleet.jpg".
+              point src to e.g. "/images/hero-fleet.png".
             */}
             <img
-              src="https://placehold.co/720x560/1A1A1A/F5F5F5?text=Protected+Fleet"
-              alt="Mock Electrical protected vehicle fleet on a Kenyan road"
+              src="/images/hero-fleet.png"
+              alt="Mock Electrical  vehicle tracking and speed governor solutions"
               loading="eager"
               className="w-full aspect-[4/3] object-cover rounded-2xl"
             />
