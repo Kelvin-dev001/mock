@@ -21,7 +21,7 @@ const BRANCHES = [
     description:
       'Our main headquarters serving the greater Nairobi metropolitan area. Visit us for consultations, installations, and product demos.',
     mapAlt: 'Map showing location of Mock Electrical Nairobi Head Office',
-    mapSrc: '', // TODO: paste Nairobi Google Maps embed src
+    mapSrc: '', // TODO: paste Nairobi Google Maps embed src (Share → Embed a map → copy src URL only)
     badgeColor: 'bg-primary text-white',
   },
   {
@@ -33,7 +33,7 @@ const BRANCHES = [
     description:
       'Serving Sagana, Karatina, and surrounding Mount Kenya region with full installation and support services.',
     mapAlt: 'Map showing location of Mock Electrical Sagana Branch',
-    mapSrc: '', // TODO: paste Sagana Google Maps embed src
+    mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.547684880402!2d37.20513577496481!3d-0.6673533993261359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182899526b023b2b%3A0x2c22e05e70c64767!2sMock%20Speed%20Governors%20Control!5e0!3m2!1sen!2ske!4v1781793286978!5m2!1sen!2ske',
     badgeColor: 'bg-dark text-white',
   },
   {
@@ -114,7 +114,7 @@ export default function Branches() {
               {branch.mapSrc ? (
                 <iframe
                   title={branch.mapAlt}
-                  src={"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.547684880402!2d37.20513577496481!3d-0.6673533993261359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182899526b023b2b%3A0x2c22e05e70c64767!2sMock%20Speed%20Governors%20Control!5e0!3m2!1sen!2ske!4v1781793286978!5m2!1sen!2ske" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>}
+                  src={branch.mapSrc}
                   className="w-full h-48 border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
