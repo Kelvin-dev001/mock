@@ -1,7 +1,7 @@
 /**
- * Branches.jsx — Three branch location cards with contact details.
+ * Branches.jsx — Three branch location cards with contact details + live maps.
  * Branches: Nairobi (HQ), Sagana, Embu.
- * Each card includes: location icon, name, phone, "Call" button, map placeholder.
+ * Each card includes: embedded Google Map, name, phone, hours, and a "Call" button.
  * Glass card styling with hover effects and scroll animations.
  */
 import React, { useRef } from 'react'
@@ -9,6 +9,8 @@ import { motion, useInView } from 'framer-motion'
 import { FaMapMarkerAlt, FaPhone, FaClock, FaBuilding } from 'react-icons/fa'
 
 // Branch data
+// mapSrc: paste the `src` value from Google Maps → Share → "Embed a map".
+// (The width/height Google gives you don't matter — the iframe is sized via CSS.)
 const BRANCHES = [
   {
     name: 'Nairobi',
@@ -19,8 +21,7 @@ const BRANCHES = [
     description:
       'Our main headquarters serving the greater Nairobi metropolitan area. Visit us for consultations, installations, and product demos.',
     mapAlt: 'Map showing location of Mock Electrical Nairobi Head Office',
-    emoji: '🏢',
-    accent: 'from-primary/20 to-surface',
+    mapSrc: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.826998160168!2d36.82612807496561!3d-1.2772545987105903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTYnMzguMSJTIDM2wrA0OSc0My4zIkU!5e0!3m2!1sen!2ske!4v1783401026039!5m2!1sen!2ske',
     badgeColor: 'bg-primary text-white',
   },
   {
@@ -32,8 +33,7 @@ const BRANCHES = [
     description:
       'Serving Sagana, Karatina, and surrounding Mount Kenya region with full installation and support services.',
     mapAlt: 'Map showing location of Mock Electrical Sagana Branch',
-    emoji: '🏪',
-    accent: 'from-dark/20 to-surface',
+    mapSrc: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3989.5512955265167!2d37.20498657496495!3d-0.6628866993306478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMMKwMzknNDYuNCJTIDM3wrAxMicyNy4yIkU!5e0!3m2!1sen!2ske!4v1783400986463!5m2!1sen!2ske',
     badgeColor: 'bg-dark text-white',
   },
   {
@@ -45,8 +45,7 @@ const BRANCHES = [
     description:
       'Serving Embu County and Eastern Kenya with expert automotive electronics installation and after-sales support.',
     mapAlt: 'Map showing location of Mock Electrical Embu Branch',
-    emoji: '🏬',
-    accent: 'from-accent/20 to-surface',
+    mapSrc: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3989.639478764192!2d37.45274667496475!3d-0.5424964994521918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMMKwMzInMzMuMCJTIDM3wrAyNycxOS4yIkU!5e0!3m2!1sen!2ske!4v1783401051771!5m2!1sen!2ske',
     badgeColor: 'bg-accent text-white',
   },
 ]
@@ -111,15 +110,26 @@ export default function Branches() {
               className="glass-card rounded-3xl overflow-hidden"
               aria-label={`${branch.name} branch`}
             >
-              {/* Map placeholder */}
-              <div
-                className={`w-full h-48 bg-gradient-to-br ${branch.accent} flex flex-col items-center justify-center gap-2`}
-                role="img"
-                aria-label={branch.mapAlt}
-              >
-                <span className="text-5xl">{branch.emoji}</span>
-                <p className="text-xs text-accent px-4 text-center">{branch.mapAlt}</p>
-              </div>
+              {/* Embedded Google Map (falls back to a branded panel until a src is added) */}
+              {branch.mapSrc ? (
+                <iframe
+                  title={branch.mapAlt}
+                  src={branch.mapSrc}
+                  className="w-full h-48 border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              ) : (
+                <div
+                  className="w-full h-48 bg-gradient-to-br from-primary/20 to-surface flex flex-col items-center justify-center gap-2"
+                  role="img"
+                  aria-label={branch.mapAlt}
+                >
+                  <FaMapMarkerAlt className="text-4xl text-primary" aria-hidden="true" />
+                  <p className="text-xs text-accent px-4 text-center">{branch.mapAlt}</p>
+                </div>
+              )}
 
               {/* Card content */}
               <div className="p-6">

@@ -37,7 +37,7 @@ export const SERVICES = [
     short:
       "Stay compliant with Kenya's NTSA regulations. Certified speed limiters keep your vehicles within legal speed limits.",
     // TODO: Replace with a close-up photo of a fitted NTSA speed-limiter unit.
-    image: 'https://placehold.co/1200x675/C8102E/F5F5F5?text=NTSA+Speed+Limiter',
+    image: 'images/services/speedgovernor.png',
     imageAlt: 'NTSA approved vehicle speed limiter device installed in a vehicle',
     intro:
       'Our NTSA-approved speed limiters help commercial operators meet Kenyan road-safety law while protecting drivers, cargo, and the public. Each unit is professionally fitted and calibrated by certified technicians at any of our three branches.',
@@ -69,7 +69,7 @@ export const SERVICES = [
     short:
       'Real-time vehicle tracking with advanced GPS. Monitor your fleet 24/7 from anywhere in Kenya.',
     // TODO: Replace with GPS tracker hardware or a live tracking dashboard/map UI.
-    image: 'https://placehold.co/1200x675/1A1A1A/F5F5F5?text=GPS+Tracker',
+    image: 'images/services/gpstracker.png',
     imageAlt: 'GPS vehicle tracker showing real-time location on a live map',
     intro:
       'Know where every vehicle is, in real time. Our GPS trackers stream live location, speed, and trip history to a secure dashboard so you can manage fleets, recover stolen vehicles, and cut running costs.',
@@ -99,7 +99,7 @@ export const SERVICES = [
     short:
       'Affordable, reliable tracking for personal and commercial vehicles.',
     // TODO: Replace with a basic tracker product photo (compact tracker unit).
-    image: 'https://placehold.co/1200x675/3A3A3A/F5F5F5?text=Basic+Tracker',
+    image: 'images/services/basicgpstracker.png',
     imageAlt: 'Compact basic vehicle tracker unit for affordable monitoring',
     intro:
       'A cost-effective entry into vehicle security. The basic tracker delivers dependable location and anti-theft essentials for private owners and small fleets who want peace of mind without the extras.',
@@ -124,7 +124,7 @@ export const SERVICES = [
     short:
       'Smart Bluetooth ignition technology for keyless vehicle security and convenience.',
     // TODO: Replace with a Bluetooth ignition module / phone app screen photo.
-    image: 'https://placehold.co/1200x675/C8102E/F5F5F5?text=Bluetooth+Ignition',
+    image: 'images/services/btgpstracker.png',
     imageAlt: 'Bluetooth tracker with smart ignition technology for vehicle security',
     intro:
       'Smart, phone-aware vehicle security. Bluetooth ignition technology pairs your vehicle with an authorised device for keyless convenience and an extra layer of anti-theft protection.',
@@ -150,7 +150,7 @@ export const SERVICES = [
     short:
       'HD video monitoring plus telematics data for complete fleet visibility and driver safety.',
     // TODO: Replace with a dash-cam mounted in a vehicle cab.
-    image: 'https://placehold.co/1200x675/1A1A1A/F5F5F5?text=Video+Telematics',
+    image: 'images/services/videotelematics.png',
     imageAlt: 'In-cab vehicle dash camera for video telematics and fleet safety',
     intro:
       'See what your drivers see. Video telematics combines HD dash-cam footage with live vehicle data to improve driver safety, resolve disputes, and protect your business with verifiable evidence.',
@@ -176,7 +176,7 @@ export const SERVICES = [
     short:
       'Advanced car alarm systems that protect your vehicle from theft and unauthorised access.',
     // TODO: Replace with a car alarm system / siren / key fob photo.
-    image: 'https://placehold.co/1200x675/3A3A3A/F5F5F5?text=Car+Alarm',
+    image: 'images/services/caralarm.png',
     imageAlt: 'Car alarm system with key fob for vehicle theft protection in Kenya',
     intro:
       'Deter theft before it happens. Our car alarm systems combine loud sirens, smart sensors, and remote control for everyday protection you can rely on.',
