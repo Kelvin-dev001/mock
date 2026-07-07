@@ -21,7 +21,7 @@ const BRANCHES = [
     description:
       'Our main headquarters serving the greater Nairobi metropolitan area. Visit us for consultations, installations, and product demos.',
     mapAlt: 'Map showing location of Mock Electrical Nairobi Head Office',
-    mapSrc: '', // TODO: paste Nairobi Google Maps embed src (Share → Embed a map → copy src URL only)
+    mapSrc: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.826998160168!2d36.82612807496561!3d-1.2772545987105903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTYnMzguMSJTIDM2wrA0OSc0My4zIkU!5e0!3m2!1sen!2ske!4v1783401026039!5m2!1sen!2ske',
     badgeColor: 'bg-primary text-white',
   },
   {
@@ -33,7 +33,7 @@ const BRANCHES = [
     description:
       'Serving Sagana, Karatina, and surrounding Mount Kenya region with full installation and support services.',
     mapAlt: 'Map showing location of Mock Electrical Sagana Branch',
-    mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.547684880402!2d37.20513577496481!3d-0.6673533993261359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182899526b023b2b%3A0x2c22e05e70c64767!2sMock%20Speed%20Governors%20Control!5e0!3m2!1sen!2ske!4v1781793286978!5m2!1sen!2ske',
+    mapSrc: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3989.5512955265167!2d37.20498657496495!3d-0.6628866993306478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMMKwMzknNDYuNCJTIDM3wrAxMicyNy4yIkU!5e0!3m2!1sen!2ske!4v1783400986463!5m2!1sen!2ske',
     badgeColor: 'bg-dark text-white',
   },
   {
@@ -45,7 +45,7 @@ const BRANCHES = [
     description:
       'Serving Embu County and Eastern Kenya with expert automotive electronics installation and after-sales support.',
     mapAlt: 'Map showing location of Mock Electrical Embu Branch',
-    mapSrc: '', // TODO: paste Embu Google Maps embed src
+    mapSrc: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3989.639478764192!2d37.45274667496475!3d-0.5424964994521918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMMKwMzInMzMuMCJTIDM3wrAyNycxOS4yIkU!5e0!3m2!1sen!2ske!4v1783401051771!5m2!1sen!2ske',
     badgeColor: 'bg-accent text-white',
   },
 ]
